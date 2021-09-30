@@ -34,7 +34,6 @@
 	//}
 %>
 
-
 <div class="flex justify-center">
   <img class="h-72" src='/images/reddit-avatar.png'>
 </div>
