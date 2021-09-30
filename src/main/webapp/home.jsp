@@ -1,4 +1,4 @@
-<jsp:include page='header.jsp'>
+<jsp:include page="/WEB-INF/views/header.jsp">
     <jsp:param name="title" value="Home"/>
 </jsp:include>
 
@@ -27,4 +27,4 @@
   Notifications <span class="badge bg-danger">4</span>
 </button>
 
-<jsp:include page='footer.jsp'></jsp:include>
+<jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
