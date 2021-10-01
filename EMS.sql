@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `user` (
     `password` varchar(255) NOT NULL,
     `mobile` varchar(255) NOT NULL,
     `address` varchar(255) NOT NULL,
-    `join_date` date NOT NULL,
+    `join_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `NIC` varchar(255) NOT NULL,
     `role` varchar(50) NOT NULL,
     PRIMARY KEY (`id`)
@@ -14,12 +14,12 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `fname`, `lname`, `email`, `password`, `mobile`, `address`, `join_date`, `NIC`, `role`)
 VALUES
-    (1, 'Admin', 'Name', 'admin@gmail.com', 'pass', '0771234567', 'No.1, Colombo', '2020-01-01', '123456789V', 'admin'),
-    (2, 'Event', 'Manager', 'event@gmail.com', 'pass', '0771234567', 'No.1, Colombo', '2020-01-01', '123456789V', 'event_manager'),
-    (3, 'Event', 'Manager', 'event2@gmail.com', 'pass', '0771234567', 'No.1, Colombo', '2020-01-01', '123456789V', 'event_manager'),
-    (4, 'Attendee', 'Name', 'attendee@gmail.com', 'pass', '0771234567', 'No.1, Colombo', '2020-01-01', '123456789V', 'attendee'),
-    (5, 'Attendee', 'Name', 'attendee2@gmail.com', 'pass', '0771234567', 'No.1, Colombo', '2020-01-01', '123456789V', 'attendee'),
-    (6, 'Attendee', 'Name', 'attendee3@gmail.com', 'pass', '0771234567', 'No.1, Colombo', '2020-01-01', '123456789V', 'attendee');
+    (1, 'Admin', 'Name', 'admin@gmail.com', 'pass', '0771234567', 'No.1, Colombo', '2011-10-01 04:22:33', '123456789V', 'admin'),
+    (2, 'Event', 'Manager', 'event@gmail.com', 'pass', '0771234567', 'No.1, Colombo', '2021-10-01 04:22:33', '123456789V', 'event_manager'),
+    (3, 'Event', 'Manager', 'event2@gmail.com', 'pass', '0771234567', 'No.1, Colombo', '2020-10-01 04:22:33', '123456789V', 'event_manager'),
+    (4, 'Attendee', 'Name', 'attendee@gmail.com', 'pass', '0771234567', 'No.1, Colombo', '2021-10-01 04:22:33', '123456789V', 'attendee'),
+    (5, 'Attendee', 'Name', 'attendee2@gmail.com', 'pass', '0771234567', 'No.1, Colombo', '2021-10-01 04:22:33', '123456789V', 'attendee'),
+    (6, 'Attendee', 'Name', 'attendee3@gmail.com', 'pass', '0771234567', 'No.1, Colombo', '2021-10-01 04:22:33', '123456789V', 'attendee');
 
 
 CREATE TABLE IF NOT EXISTS `category` (
@@ -84,18 +84,18 @@ CREATE TABLE IF NOT EXISTS `feedback` (
     `user_id` int(11) NOT NULL,
     `description` varchar(255) NOT NULL,
     `rating` int(11) NOT NULL,
-    `date` date NOT NULL,
+    `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
     CONSTRAINT feedEventUid FOREIGN KEY (`event_id`) REFERENCES `event`(`id`) ON DELETE CASCADE,
     CONSTRAINT feedUserUid FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE
 );
 
 
-INSERT INTO `feedback` (`id`, `event_id`, `user_id`, `description`, `rating`, `date`)
+INSERT INTO `feedback` (`id`, `event_id`, `user_id`, `description`, `rating`, `created_at`)
 VALUES
-    (1, 1, 4, 'Description 1', 5, '2020-01-01'),
-    (2, 1, 5, 'Description 2', 3, '2020-01-01'),
-    (3, 2, 6, 'Description 3', 4, '2020-01-01');
+    (1, 1, 4, 'Description 1', 5, '2021-10-01 04:22:33'),
+    (2, 1, 5, 'Description 2', 3, '2021-10-01 04:22:33'),
+    (3, 2, 6, 'Description 3', 4, '2021-10-01 04:22:33');
 
 
 
@@ -122,16 +122,16 @@ CREATE TABLE IF NOT EXISTS `announcement` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `title` varchar(255) NOT NULL,
     `description` varchar(255) NOT NULL,
-    `date` date NOT NULL,
+    `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)
 );
 
 
-INSERT INTO `announcement` (`id`, `title`, `description`, `date`)
+INSERT INTO `announcement` (`id`, `title`, `description`, `created_at`)
 VALUES
-    (1, 'Announcement 1', 'Description 1', '2020-01-01'),
-    (2, 'Announcement 2', 'Description 2', '2020-01-01'),
-    (3, 'Announcement 3', 'Description 3', '2020-01-01');
+    (1, 'Announcement 1', 'Description 1', '2021-10-01 04:22:33'),
+    (2, 'Announcement 2', 'Description 2', '2021-10-01 04:22:33'),
+    (3, 'Announcement 3', 'Description 3', '2021-10-01 04:22:33');
 
 
 CREATE TABLE IF NOT EXISTS `message` (
@@ -140,16 +140,16 @@ CREATE TABLE IF NOT EXISTS `message` (
     `email` varchar(255) NOT NULL,
     `subject` varchar(255) NOT NULL,
     `message` varchar(255) NOT NULL,
-    `date` date NOT NULL,
+    `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)  
 );
 
 
-INSERT INTO `message` (`id`, `name`, `email`, `subject`, `message`, `date`)
+INSERT INTO `message` (`id`, `name`, `email`, `subject`, `message`, `created_at`)
 VALUES
-    (1, 'Name 1', 'Email 1', 'Subject 1', 'Message 1', '2020-01-01'),
-    (2, 'Name 2', 'Email 2', 'Subject 2', 'Message 2', '2020-01-01'),
-    (3, 'Name 3', 'Email 3', 'Subject 3', 'Message 3', '2020-01-01');
+    (1, 'Name 1', 'Email 1', 'Subject 1', 'Message 1', '2021-10-01 04:22:33'),
+    (2, 'Name 2', 'Email 2', 'Subject 2', 'Message 2', '2021-10-01 04:22:33'),
+    (3, 'Name 3', 'Email 3', 'Subject 3', 'Message 3', '2021-10-01 04:22:33');
 
 
 CREATE TABLE IF NOT EXISTS `event_story` (
@@ -158,15 +158,15 @@ CREATE TABLE IF NOT EXISTS `event_story` (
     `user_id` int(11) NOT NULL,
     `title` varchar(255) NOT NULL,
     `description` varchar(255) NOT NULL,
-    `date` date NOT NULL,
+    `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
     CONSTRAINT storyEventUid FOREIGN KEY (`event_id`) REFERENCES `event`(`id`) ON DELETE CASCADE,
     CONSTRAINT storyUserUid FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE
 );
 
 
-INSERT INTO `event_story` (`id`, `event_id`, `user_id`, `title`, `description`, `date`)
+INSERT INTO `event_story` (`id`, `event_id`, `user_id`, `title`, `description`, `created_at`)
 VALUES
-    (1, 1, 4, 'Title 1', 'Description 1', '2020-01-01'),
-    (2, 1, 5, 'Title 2', 'Description 2', '2020-01-01'),
-    (3, 2, 6, 'Title 3', 'Description 3', '2020-01-01');
+    (1, 1, 4, 'Title 1', 'Description 1', '2021-10-01 04:22:33'),
+    (2, 1, 5, 'Title 2', 'Description 2', '2021-10-01 04:22:33'),
+    (3, 2, 6, 'Title 3', 'Description 3', '2021-10-01 04:22:33');

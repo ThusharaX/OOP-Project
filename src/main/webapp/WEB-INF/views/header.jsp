@@ -58,7 +58,7 @@
 				if(session.getAttribute("id") == null){
 					//response.sendRedirect("/login");
 					out.print("<li class='nav-item'><a class='nav-link' href='/login'>Login</a></li>");
-					out.print("<li class='nav-item'><a class='nav-link' href='/register'>Register</a></li>");
+					out.print("<li class='nav-item'><a class='nav-link' href='/add-user'>Register</a></li>");
 				}
 				else {
 					out.print("<li class='nav-item'><a class='nav-link' href='/dashboard'>Dashboard</a></li>");

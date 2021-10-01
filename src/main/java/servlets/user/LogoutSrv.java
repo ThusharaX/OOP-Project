@@ -1,4 +1,4 @@
-package servlets;
+package servlets.user;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
