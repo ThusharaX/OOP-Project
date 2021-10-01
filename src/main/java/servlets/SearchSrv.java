@@ -20,7 +20,7 @@ public class SearchSrv extends HttpServlet {
 		String search = request.getParameter("q");
 		
 		request.setAttribute("result", search);
-		request.getRequestDispatcher("searchResult.jsp").forward(request, response);
+		request.getRequestDispatcher("/jsp/searchResult.jsp").forward(request, response);
 	}
 
 }
