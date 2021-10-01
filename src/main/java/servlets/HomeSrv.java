@@ -21,10 +21,10 @@ public class HomeSrv extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		UserServiceImpl userserviceimpl = new UserServiceImpl();
-//		ArrayList<User> users = userserviceimpl.getUsers();
-//
-//		request.setAttribute("users", users);
+		UserServiceImpl userserviceimpl = new UserServiceImpl();
+		ArrayList<User> users = userserviceimpl.getUsers();
+
+		request.setAttribute("users", users);
 		
 		getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
 	}

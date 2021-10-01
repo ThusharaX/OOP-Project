@@ -106,4 +106,21 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
+	@Override
+	public void addUser(String fname, String lname, String email, String password, String mobile, String address, String nIC, String role) {
+
+		User user = new User(fname, lname, email, password, mobile, address, nIC, role);
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "INSERT INTO `user` (`fname`, `lname`, `email`, `password`, `mobile`, `address`, `NIC`, `role`) VALUES ('" + user.getFname() + "', '" + user.getLname() + "', '" + user.getEmail() + "', '" + user.getPassword() + "', '" + user.getMobile() + "', '" + user.getAddress() + "', '" + user.getNIC() + "', '" + user.getRole() + "');";
+			stmt.executeUpdate(sql);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+
 }

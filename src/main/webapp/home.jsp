@@ -6,15 +6,15 @@
 <%@page import="model.User"%>
 
 <%
-	//ArrayList<User> users = (ArrayList<User>)request.getAttribute("users");
+	ArrayList<User> users = (ArrayList<User>)request.getAttribute("users");
  
-    //for(User user : users)
-    //{
-    //    out.print("Id: " + user.getId());
-    //    out.print("<br/>");
-    //    out.print("Name: " + user.getFname() + user.getLname());
-    //    out.print("<br/>");
-    //}
+    for(User user : users)
+    {
+        out.print("Id: " + user.getId());
+        out.print("<br/>");
+        out.print("Name: " + user.getFname() + user.getLname());
+        out.print("<br/>");
+    }
 %>
 
 <%

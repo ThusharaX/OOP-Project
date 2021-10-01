@@ -14,6 +14,31 @@ public class User {
 	
 	public User() {}
 	
+	
+	/**
+	 * @param fname
+	 * @param lname
+	 * @param email
+	 * @param password
+	 * @param mobile
+	 * @param address
+	 * @param nIC
+	 * @param role
+	 */
+	public User(String fname, String lname, String email, String password, String mobile, String address, String nIC,
+			String role) {
+		this.fname = fname;
+		this.lname = lname;
+		this.email = email;
+		this.password = password;
+		this.mobile = mobile;
+		this.address = address;
+		this.NIC = nIC;
+		this.role = role;
+	}
+
+
+
 	/**
 	 * @param id
 	 * @param fname
@@ -36,7 +61,7 @@ public class User {
 		this.mobile = mobile;
 		this.address = address;
 		this.join_date = join_date;
-		NIC = nIC;
+		this.NIC = nIC;
 		this.role = role;
 	}
 	/**
