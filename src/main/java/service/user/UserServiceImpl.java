@@ -107,9 +107,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void addUser(String fname, String lname, String email, String password, String mobile, String address, String nIC, String role) {
-
-		User user = new User(fname, lname, email, password, mobile, address, nIC, role);
+	public void addUser(User user) {
 		
 		try {
 			con = DBConnect.getConnection();

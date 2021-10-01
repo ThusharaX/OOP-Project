@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.User;
 import service.user.UserServiceImpl;
 
 /**
@@ -38,8 +39,10 @@ public class AddUserSrv extends HttpServlet {
 		String NIC = request.getParameter("NIC");
 		String role = request.getParameter("role");
 		
+		User user = new User(fname, lname, email, password, mobile, address, NIC, role);
+		
 		UserServiceImpl usimp = new UserServiceImpl();
-		usimp.addUser(fname, lname, email, password, mobile, address, NIC, role);
+		usimp.addUser(user);
 		
 		response.sendRedirect("/login");
 	}
