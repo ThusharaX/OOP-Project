@@ -22,7 +22,7 @@ public class AddUserSrv extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		getServletContext().getRequestDispatcher("/add-user.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/jsp/add-user.jsp").forward(request, response);
 	}
 
 	/**
