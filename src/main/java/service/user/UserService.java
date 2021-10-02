@@ -17,4 +17,5 @@ public interface UserService {
 	public boolean checkUserExist(String email);
 	public User getUserByEmail(String email);
 	public void addUser(User user);
+	public User getUserByID(int user_id);
 }

@@ -121,4 +121,37 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public User getUserByID(int user_id) {
+		
+		User user = new User();
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "SELECT * FROM user WHERE id = '" + user_id + "'";
+			rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				user.setId(rs.getInt("id"));
+				user.setFname(rs.getString("fname"));
+				user.setLname(rs.getString("lname"));
+				user.setEmail(rs.getString("email"));
+				user.setPassword(rs.getString("password"));
+				user.setMobile(rs.getString("mobile"));
+				user.setAddress(rs.getString("address"));
+				user.setJoin_date(rs.getString("join_date"));
+				user.setNIC(rs.getString("NIC"));
+				user.setRole(rs.getString("role"));
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return user;
+	}
+	
+	
+
 }
