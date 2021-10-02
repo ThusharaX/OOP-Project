@@ -49,17 +49,18 @@ CREATE TABLE IF NOT EXISTS `event` (
     `status` int(11) NOT NULL,
     `online_event` int(11) NOT NULL,
     `category_id` int(11) NOT NULL,
+    `venue` varchar(255) DEFAULT NULL,
     PRIMARY KEY (`id`),
     CONSTRAINT eventUid FOREIGN KEY (`event_manager_id`) REFERENCES `user`(`id`) ON DELETE CASCADE,
     CONSTRAINT eventCid FOREIGN KEY (`category_id`) REFERENCES `category`(`id`) ON DELETE CASCADE
 );
 
 
-INSERT INTO `event` (`id`, `name`, `description`, `date`, `time`, `available_tickets`, `event_manager_id`, `status`, `online_event`, `category_id`)
+INSERT INTO `event` (`id`, `name`, `description`, `date`, `time`, `available_tickets`, `event_manager_id`, `status`, `online_event`, `category_id`, `venue`)
 VALUES
-    (1, 'Event 1', 'Description 1', '2020-01-01', '12:00:00', 10, 2, 1, 1, 1),
-    (2, 'Event 2', 'Description 2', '2020-01-01', '12:00:00', 10, 3, 1, 1, 2),
-    (3, 'Event 3', 'Description 3', '2020-01-01', '12:00:00', 10, 2, 1, 1, 3);
+    (1, 'Event 1', 'Description 1', '2020-01-01', '12:00:00', 10, 2, 1, 0, 1, 'Colombo'),
+    (2, 'Event 2', 'Description 2', '2020-01-01', '12:00:00', 10, 3, 1, 0, 2, 'Kandy'),
+    (3, 'Event 3', 'Description 3', '2020-01-01', '12:00:00', 10, 2, 1, 1, 3, '');
 
 
 CREATE TABLE IF NOT EXISTS `attendee_list` (

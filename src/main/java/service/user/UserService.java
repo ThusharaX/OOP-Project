@@ -5,7 +5,7 @@ package service.user;
 
 import java.util.ArrayList;
 
-import model.User;
+import model.user.User;
 
 /**
  * @author ThusharaThiwanka

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.User;
+import model.user.User;
 import service.user.UserServiceImpl;
 
 /**
@@ -22,7 +22,7 @@ public class AddUserSrv extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		getServletContext().getRequestDispatcher("/jsp/add-user.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/jsp/user/add-user.jsp").forward(request, response);
 	}
 
 	/**

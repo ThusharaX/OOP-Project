@@ -37,7 +37,11 @@
 	        <li class="nav-item">
 	          <a class="nav-link" href="/contact-us">Contact Us</a>
 	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="/categories">Categories</a>
+	        </li>
 	        
+	        <!-- 
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	            Categories
@@ -49,6 +53,7 @@
 	            <li><a class="dropdown-item" href="#">Other</a></li>
 	          </ul>
 	        </li>
+	         -->
 	        
 	        <%
 				//allow access only if session exists
