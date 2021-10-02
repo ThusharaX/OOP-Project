@@ -22,6 +22,10 @@ public class Event {
 	protected int categoryId;
 	protected String venue;
 	
+	
+	public Event() {}
+	
+	
 	/**
 	 * @param id
 	 * @param name

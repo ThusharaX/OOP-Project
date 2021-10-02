@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.event.Event;
+import model.user.User;
 import util.DBConnect;
 
 /**
@@ -54,5 +55,37 @@ public class EventServiceImpl {
 		}
 		
 		return events;
+	}
+	
+	public static Event getEventByID(int event_id) {
+
+		Event event = new Event();
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "SELECT * FROM event WHERE id = '" + event_id + "'";
+			rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				event.setId(rs.getInt("id"));
+				event.setName(rs.getString("name"));
+				event.setDescription(rs.getString("description"));
+				event.setDate(rs.getString("date"));
+				event.setTime(rs.getString("time"));
+				event.setAvailableTickets(rs.getInt("available_tickets"));
+				event.setEventManagerId(rs.getInt("event_manager_id"));
+				event.setStatus(rs.getInt("status"));
+				event.setOnlineEvent(rs.getInt("online_event"));
+				event.setCategoryId(rs.getInt("category_id"));
+				event.setVenue(rs.getString("venue"));
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return event;
+		
 	}
 }
