@@ -3,7 +3,7 @@
  */
 package service.user;
 
-import model.User;
+import model.user.User;
 
 /**
  * @author ThusharaThiwanka

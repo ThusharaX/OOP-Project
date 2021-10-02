@@ -15,7 +15,7 @@ import service.category.CategoryService;
 /**
  * Servlet implementation class CategoryDisplaySrv
  */
-@WebServlet("/category")
+@WebServlet("/categories")
 public class CategoryDisplaySrv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

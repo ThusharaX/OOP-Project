@@ -3,7 +3,7 @@
 </jsp:include>
 
 <%@page import="java.util.ArrayList"%>
-<%@page import="model.User"%>
+<%@page import="model.user.User"%>
 
 <%
 	ArrayList<User> users = (ArrayList<User>)request.getAttribute("users");

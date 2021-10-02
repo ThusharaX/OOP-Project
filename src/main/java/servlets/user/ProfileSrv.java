@@ -1,20 +1,22 @@
 package servlets.user;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.user.User;
 import service.user.UserServiceImpl;
 
 /**
- * Servlet implementation class AddUserSrv
+ * Servlet implementation class ProfileSrv
  */
-@WebServlet("/add-user")
-public class AddUserSrv extends HttpServlet {
+@WebServlet("/profile")
+public class ProfileSrv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -22,29 +24,30 @@ public class AddUserSrv extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		getServletContext().getRequestDispatcher("/jsp/user/add-user.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		
+		//allow access only if session exists
+		if(session.getAttribute("id") == null){
+			response.sendRedirect("/login");
+		}
+		else {
+			int user_id = (int)(session.getAttribute("id"));
+			
+			UserServiceImpl userserviceimpl = new UserServiceImpl();
+			User user = userserviceimpl.getUserByID(user_id);
+			
+			request.setAttribute("user", user);
+			
+			request.getRequestDispatcher("/jsp/user/profile.jsp").forward(request, response);
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String fname = request.getParameter("fname");
-		String lname = request.getParameter("lname");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		String mobile = request.getParameter("mobile");
-		String address = request.getParameter("address");
-		String NIC = request.getParameter("NIC");
-		String role = request.getParameter("role");
-		
-		User user = new User(fname, lname, email, password, mobile, address, NIC, role);
-		
-		UserServiceImpl usimp = new UserServiceImpl();
-		usimp.addUser(user);
-		
-		response.sendRedirect("/login");
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

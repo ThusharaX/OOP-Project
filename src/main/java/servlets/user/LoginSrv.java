@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.User;
+import model.user.User;
 import service.user.LoginServiceImpl;
 import service.user.UserServiceImpl;
 
@@ -18,7 +18,7 @@ public class LoginSrv extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		getServletContext().getRequestDispatcher("/jsp/login.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/jsp/user/login.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,7 +44,7 @@ public class LoginSrv extends HttpServlet {
 			response.sendRedirect("/");
 		}
 		else {
-			getServletContext().getRequestDispatcher("/jsp/login.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/jsp/user/login.jsp").forward(request, response);
 		}
 		
 	}
