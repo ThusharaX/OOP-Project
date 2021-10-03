@@ -7,10 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.category.Category;
+import service.category.CategoryService;
+
 /**
  * Servlet implementation class AddCategorySrv
  */
-@WebServlet("/AddCategorySrv")
+@WebServlet("/AddCategory")
 public class AddCategorySrv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -22,20 +25,26 @@ public class AddCategorySrv extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		getServletContext().getRequestDispatcher("/WEB-INF/views/category/AddCategory.jsp").forward(request, response);
+		
+		
+		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	
+		String name = request.getParameter("name");
+		String description = request.getParameter("description");
+		Category category = new Category (name,description);
+		CategoryService.AddCateory(category);
+		
+		
+		
+		response.sendRedirect("/");
 	}
 
 }

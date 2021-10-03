@@ -15,7 +15,7 @@ import util.DBConnect;
  * @author Gaween Kanishka
  *
  */
-
+//################################# Display category ########################################
 public class CategoryService {
 	
 	static Connection con = null;
@@ -53,8 +53,21 @@ public class CategoryService {
 	}
 	
 	
+//########################################### Add Category ########################################
 	
 	
-	
+		
+		public static void AddCateory(Category category) {
+		
+			try {
+				con = DBConnect.getConnection();
+				stmt = con.createStatement();
+				String sql = "INSERT INTO `category` (`name`, `description`) VALUES ('" + category.getName() + "', '" + category.getDiscription() +"');";
+				stmt.executeUpdate(sql);
+			}
+			catch (Exception e) {
+				System.out.println(e.getMessage());
+			}		
+		}				
+	}
 
-}

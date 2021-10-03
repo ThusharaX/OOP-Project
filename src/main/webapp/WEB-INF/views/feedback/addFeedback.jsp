@@ -2,7 +2,6 @@
 	<jsp:param name="title" value="Add Feedback"/>
 </jsp:include>
 
-
 <h1 class="text-3xl font-bold mb-4">Create Feedback</h1>
 
 <form action="/add-feedback" method="post">
