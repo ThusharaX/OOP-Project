@@ -26,7 +26,7 @@ public class HomeSrv extends HttpServlet {
 
 		request.setAttribute("users", users);
 		
-		getServletContext().getRequestDispatcher("/jsp/home.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
 	}
 
 	

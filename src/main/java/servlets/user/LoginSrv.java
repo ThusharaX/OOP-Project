@@ -18,7 +18,7 @@ public class LoginSrv extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		getServletContext().getRequestDispatcher("/jsp/user/login.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/WEB-INF/views/user/login.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,7 +44,7 @@ public class LoginSrv extends HttpServlet {
 			response.sendRedirect("/");
 		}
 		else {
-			getServletContext().getRequestDispatcher("/jsp/user/login.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/WEB-INF/views/user/login.jsp").forward(request, response);
 		}
 		
 	}

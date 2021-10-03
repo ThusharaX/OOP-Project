@@ -28,7 +28,7 @@ public class CategoryDisplaySrv extends HttpServlet {
 		ArrayList<Category> categories = CategoryService.getCategories();
 		
 		request.setAttribute("categories", categories);
-		getServletContext().getRequestDispatcher("/jsp/category/CategoryDisplay.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/WEB-INF/views/category/CategoryDisplay.jsp").forward(request, response);
 		
 	}
 

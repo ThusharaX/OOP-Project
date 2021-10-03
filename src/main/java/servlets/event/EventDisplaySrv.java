@@ -28,7 +28,7 @@ public class EventDisplaySrv extends HttpServlet {
 		
 		request.setAttribute("events", events);
 		
-		getServletContext().getRequestDispatcher("/jsp/event/events.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/WEB-INF/views/event/events.jsp").forward(request, response);
 	}
 
 	/**
