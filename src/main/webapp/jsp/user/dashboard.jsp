@@ -1,5 +1,5 @@
 <jsp:include page="/WEB-INF/views/header.jsp">
-	<jsp:param name="title" value="Profile"/>
+	<jsp:param name="title" value="Dashboard"/>
 </jsp:include>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

@@ -27,7 +27,7 @@
                     <br>
                     <div class="card">
                         <img class="card-img-top img-fluid"
-                            src="#" alt="">
+                            src="http://colomboconferences.com/wp-content/uploads/2018/11/1-3-1080x450-768x320.jpg" alt="">
                         <div class="card-body">
                             <h4 class="card-title text-center">${event.getName()}</h4>
                             <hr>
@@ -50,14 +50,41 @@
                                     ${event.getAvailableTickets()}
                             </p>
                             
-                            <p class="card-text">
-                                <b><i class="fas fa-map-marker-alt"></i> Venue:</b>
-                                    ${event.getVenue()}
-                            </p>
+                            <c:choose>
+							    <c:when test="${event.getOnlineEvent() == 1}">
+							        <p class="card-text">
+		                                <b><i class="fas fa-globe-americas"></i> Online Event</b>
+		                            </p>
+							    </c:when>    
+							    <c:otherwise>
+							        <p class="card-text">
+		                                <b><i class="fas fa-map-marker-alt"></i> Venue:</b>
+		                                    ${event.getVenue()}
+		                            </p>
+							    </c:otherwise>
+							</c:choose>
+							
+							<c:choose>
+							    <c:when test="${event.getStatus() == 1}">
+							        <p class="card-text text-green-600">
+		                                <b><i class="fas fa-info-circle"></i> Status:</b>
+		                                Active
+		                            </p>
+							    </c:when>    
+							    <c:otherwise>
+							        <p class="card-text text-red-600">
+		                                <b><i class="fas fa-info-circle"></i> Status:</b>
+		                                Inactive
+		                            </p>
+							    </c:otherwise>
+							</c:choose>
+
                         </div>
                         <div class="col text-center">
-                        <a href="eventDetails?id=${event.getId()}" class="btn btn-danger"><i
-                            class="fas fa-external-link-alt"></i> Open</a>
+                        <a href="eventDetails?id=${event.getId()}" class="btn btn-danger">
+                        	<i class="fas fa-external-link-alt"></i> Open
+                        </a>
+                        
                         </div>
                         <br>
                     </div>
