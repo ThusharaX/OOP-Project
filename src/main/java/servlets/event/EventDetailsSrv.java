@@ -38,7 +38,7 @@ public class EventDetailsSrv extends HttpServlet {
 			request.setAttribute("event", event);
 			// request.setAttribute("category", CategoryService.getCategoryByID(event.getCategoryId()));
 			
-			request.getRequestDispatcher("/jsp/event/eventDetails.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/event/eventDetails.jsp").forward(request, response);
 		}
 	}
 

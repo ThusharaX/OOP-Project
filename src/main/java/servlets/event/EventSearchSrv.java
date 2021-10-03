@@ -29,7 +29,7 @@ public class EventSearchSrv extends HttpServlet {
 		request.setAttribute("events", events);
 		request.setAttribute("result", search);
 		
-		request.getRequestDispatcher("/jsp/event/searchResult.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/event/searchResult.jsp").forward(request, response);
 	}
 
 }

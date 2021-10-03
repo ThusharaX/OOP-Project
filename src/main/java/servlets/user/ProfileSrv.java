@@ -38,7 +38,7 @@ public class ProfileSrv extends HttpServlet {
 			
 			request.setAttribute("user", user);
 			
-			request.getRequestDispatcher("/jsp/user/profile.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/user/profile.jsp").forward(request, response);
 		}
 	}
 
