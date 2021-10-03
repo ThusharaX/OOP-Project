@@ -42,6 +42,10 @@
         <a href="bookTicket?id=${event.getId()}" class="btn btn-success">
 			<i class="fa fa-ticket-alt"></i> Attend
 		</a>
+
+		<a href="/add-feedback?eid=${event.getId()}" class="btn btn-primary">
+			<i class="fas fa-comments"></i> Give Feedback
+		</a>
     </c:when>    
     <c:otherwise>
     	<p class="text-red-600">
@@ -54,7 +58,5 @@
 		</a>
     </c:otherwise>
 </c:choose>
-
-
 
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
