@@ -48,12 +48,12 @@ public class MessageService {
 
 	
 		
-		public static void AddCateory(Message message) {
+		public static void AddMessage(Message message) {
 		
 			try {
 				con = DBConnect.getConnection();
 				stmt = con.createStatement();
-				String sql = "INSERT INTO `message` (`name`, `email`, `subject`, `message`,`created_at`) VALUES ('" + message.getName() + "', '" + message.getEmail() + "', '" + message.getSubject()+ " ' ,'"+ message.getMessage()+"','"+ message.getCreate_at()+"');";
+				String sql = "INSERT INTO `message` (`name`, `email`, `subject`, `message`) VALUES ('" + message.getName() + "', '" + message.getEmail() + "', '" + message.getSubject()+ " ' ,'"+ message.getMessage()+"');";
 				stmt.executeUpdate(sql);
 			}
 			catch (Exception e) {
