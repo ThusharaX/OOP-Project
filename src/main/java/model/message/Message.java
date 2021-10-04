@@ -29,6 +29,14 @@ public class Message {
 	}
 
 
+	public Message(String name, String email, String subject, String message) {
+		this.name = name;
+		this.email = email;
+		this.subject = subject;
+		this.message = message;
+	}
+
+
 	public int getId() {
 		return id;
 	}

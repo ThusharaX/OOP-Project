@@ -41,7 +41,6 @@ public class AddCategorySrv extends HttpServlet {
 		String description = request.getParameter("description");
 		
 		
-		
 		Category category = new Category (name,description);
 		CategoryService.AddCateory(category);
 		
