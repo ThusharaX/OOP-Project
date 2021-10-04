@@ -31,8 +31,9 @@ public class MessageService {
 				String email  = rs.getString(3);
 				String subject = rs.getString(4);
 				String message	= rs.getString(5);
-								
-				Message  c = new Message(id,name,email,subject,message);
+				String create_at = rs.getString(6);
+				
+				Message  c = new Message(id,name,email,subject,message,create_at);
 				
 				messages.add(c);
 				//System.out.println(name);
@@ -52,7 +53,7 @@ public class MessageService {
 			try {
 				con = DBConnect.getConnection();
 				stmt = con.createStatement();
-				String sql = "INSERT INTO `message` (`name`, `email`, `subject`, `message`) VALUES ('" + message.getName() + "', '" + message.getEmail() + "', '" + message.getSubject()+ " ' ,'"+ message.getMessage()+"');";
+				String sql = "INSERT INTO `message` (`name`, `email`, `subject`, `message`,`created_at`) VALUES ('" + message.getName() + "', '" + message.getEmail() + "', '" + message.getSubject()+ " ' ,'"+ message.getMessage()+"','"+ message.getCreate_at()+"');";
 				stmt.executeUpdate(sql);
 			}
 			catch (Exception e) {

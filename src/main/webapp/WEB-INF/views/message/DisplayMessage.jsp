@@ -27,6 +27,8 @@
         out.print("message: " + message.getMessage());
         out.print("<br/>");
         
+        out.print("create_at: " + message.getCreate_at());
+        out.print("<br/>");
     }
 %>
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
