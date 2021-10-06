@@ -10,18 +10,14 @@ import model.message.Message;
 import service.message.MessageService;
 
 
-@WebServlet("/AddMessages")
+@WebServlet("/contact-us")
 public class AddMessageSrv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-  
-    public AddMessageSrv() {
-     
-    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		getServletContext().getRequestDispatcher("/WEB-INF/views/message/AddMessage.jsp").forward(request, response);
 	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String name = request.getParameter("name");
