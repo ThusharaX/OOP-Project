@@ -59,8 +59,11 @@ CREATE TABLE IF NOT EXISTS `event` (
 INSERT INTO `event` (`id`, `name`, `description`, `date`, `time`, `available_tickets`, `event_manager_id`, `status`, `online_event`, `category_id`, `venue`)
 VALUES
     (1, 'Event 1', 'Description 1', '2020-01-01', '12:00:00', 10, 2, 1, 0, 1, 'Colombo'),
-    (2, 'Event 2', 'Description 2', '2020-01-01', '12:00:00', 10, 3, 1, 0, 2, 'Kandy'),
-    (3, 'Event 3', 'Description 3', '2020-01-01', '12:00:00', 10, 2, 1, 1, 3, '');
+    (2, 'Event 2', 'Description 2', '2020-01-01', '12:00:00', 10, 3, 0, 0, 2, 'Kandy'),
+    (3, 'Event 3', 'Description 3', '2020-01-01', '12:00:00', 10, 2, 1, 1, 3, ''),
+    (4, 'Event 4', 'Description 4', '2020-01-01', '12:00:00', 10, 2, 1, 0, 1, 'Colombo'),
+    (5, 'Event 5', 'Description 5', '2020-01-01', '12:00:00', 10, 3, 1, 0, 2, 'Kandy'),
+    (6, 'Event 6', 'Description 6', '2020-01-01', '12:00:00', 10, 2, 0, 1, 3, '');
 
 
 CREATE TABLE IF NOT EXISTS `attendee_list` (
