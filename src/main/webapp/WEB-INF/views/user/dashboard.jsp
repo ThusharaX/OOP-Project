@@ -4,7 +4,6 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<a href="/profile" class="btn btn-primary">Profile</a>
 
 <%
 	String role = (String)session.getAttribute("role");
@@ -26,6 +25,8 @@
         <jsp:include page="/WEB-INF/views/user/dashboards/attendeePanel.jsp"></jsp:include>
     </c:when>
 </c:choose>
+
+<a href="/profile" class="btn btn-primary">Profile</a>
 
 
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>

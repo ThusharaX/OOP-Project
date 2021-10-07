@@ -64,6 +64,25 @@ public class User {
 		this.NIC = nIC;
 		this.role = role;
 	}
+	
+	/**
+	 * @param fname
+	 * @param lname
+	 * @param email
+	 * @param mobile
+	 * @param address
+	 * @param nIC
+	 */
+	public User(int id, String fname, String lname, String email, String mobile, String address, String nIC) {
+		this.id = id;
+		this.fname = fname;
+		this.lname = lname;
+		this.email = email;
+		this.mobile = mobile;
+		this.address = address;
+		NIC = nIC;
+	}
+	
 	/**
 	 * @return the id
 	 */
@@ -166,6 +185,7 @@ public class User {
 	public String getNIC() {
 		return NIC;
 	}
+	
 	/**
 	 * @param nIC the nIC to set
 	 */

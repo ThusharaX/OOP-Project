@@ -50,7 +50,8 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.print(e);
+			e.printStackTrace();
 		}
 		return users;
 	}
@@ -71,7 +72,8 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.print(e);
+			e.printStackTrace();
 		}
 		return isExist;
 	}
@@ -100,7 +102,8 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.print(e);
+			e.printStackTrace();
 		}
 		
 		return user;
@@ -116,7 +119,8 @@ public class UserServiceImpl implements UserService {
 			stmt.executeUpdate(sql);
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.print(e);
+			e.printStackTrace();
 		}
 		
 	}
@@ -146,12 +150,42 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.print(e);
+			e.printStackTrace();
 		}
 		
 		return user;
 	}
 	
 	
+	@Override
+	public void updateUser(User user) {
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "UPDATE `user` SET `fname`='" + user.getFname() + "', `lname`='" + user.getLname() + "', `email`='" + user.getEmail() + "', `mobile`='" + user.getMobile() + "', `address`='" + user.getAddress() + "', `NIC`='" + user.getNIC() + "' WHERE `id`='" + user.getId() + "';";
+			stmt.executeUpdate(sql);
+		}
+		catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+		
+	}
 
+	@Override
+	public void deleteUser(int user_id) {
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "DELETE FROM `user` WHERE `id`='" + user_id + "';";
+			stmt.executeUpdate(sql);
+		}
+		catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+	}
 }
