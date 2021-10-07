@@ -58,12 +58,16 @@
 	        <%
 				//allow access only if session exists
 				int id;
-				String role = null;
+				String role = (String)session.getAttribute("role");
 			
 				if(session.getAttribute("id") == null){
 					//response.sendRedirect("/login");
 					out.print("<li class='nav-item'><a class='nav-link' href='/login'>Login</a></li>");
 					out.print("<li class='nav-item'><a class='nav-link' href='/add-user'>Register</a></li>");
+				}
+				else if (role.equals("admin")) {
+					out.print("<li class='nav-item'><a class='nav-link' href='/dashboard'>Admin Panel</a></li>");
+					out.print("<li class='nav-item'><a class='nav-link' href='/logout'>Logout</a></li>");
 				}
 				else {
 					out.print("<li class='nav-item'><a class='nav-link' href='/dashboard'>Dashboard</a></li>");

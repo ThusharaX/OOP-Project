@@ -18,4 +18,6 @@ public interface UserService {
 	public User getUserByEmail(String email);
 	public void addUser(User user);
 	public User getUserByID(int user_id);
+	public void updateUser(User user);
+	public void deleteUser(int user_id);
 }
