@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -15,6 +16,7 @@
 	    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">    
 	    
 	    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" />
+	    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css" />
 	    
 		<script src="https://kit.fontawesome.com/881e7597bb.js" crossorigin="anonymous"></script>
 	</head>
@@ -57,7 +59,6 @@
 	        
 	        <%
 				//allow access only if session exists
-				int id;
 				String role = (String)session.getAttribute("role");
 			
 				if(session.getAttribute("id") == null){
@@ -76,10 +77,19 @@
 			%>
 			
 	      </ul>
+	      
 	      <form class="d-flex" action="/search" method="get">
 	        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
 	        <button class="btn btn-outline-success" type="submit">Search</button>
 	      </form>
+	      
+	      <%	      
+	      		if(session.getAttribute("id") != null){
+	      			out.print("<a href='/profile'>");
+	      			out.print("<img src='https://avatars.dicebear.com/api/micah/" + session.getAttribute("fname") +".svg' alt='Avatar' class='avatar ml-5'>");
+	      			out.print("</a>");
+	      		}
+	      %>
 	    </div>
 	  </div>
 	</nav>

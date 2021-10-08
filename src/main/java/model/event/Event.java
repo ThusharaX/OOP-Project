@@ -53,6 +53,36 @@ public class Event {
 		this.categoryId = categoryId;
 		this.venue = venue;
 	}
+	
+	
+	
+	/**
+	 * @param name
+	 * @param description
+	 * @param date
+	 * @param time
+	 * @param availableTickets
+	 * @param eventManagerId
+	 * @param status
+	 * @param onlineEvent
+	 * @param categoryId
+	 * @param venue
+	 */
+	public Event(String name, String description, String date, String time, int availableTickets, int eventManagerId,
+			int status, int onlineEvent, int categoryId, String venue) {
+		this.name = name;
+		this.description = description;
+		this.date = date;
+		this.time = time;
+		this.availableTickets = availableTickets;
+		this.eventManagerId = eventManagerId;
+		this.status = status;
+		this.onlineEvent = onlineEvent;
+		this.categoryId = categoryId;
+		this.venue = venue;
+	}
+
+
 	/**
 	 * @return the id
 	 */

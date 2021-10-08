@@ -1,8 +1,6 @@
-package servlets.user;
+package servlets.event;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,21 +8,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.event.Event;
 import service.event.EventServiceImpl;
+import service.user.UserServiceImpl;
 
 /**
- * Servlet implementation class DashboardSrv
+ * Servlet implementation class DeleteEventSrv
  */
-@WebServlet("/dashboard")
-public class DashboardSrv extends HttpServlet {
+@WebServlet("/delete-event")
+public class DeleteEventSrv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		HttpSession session = request.getSession();
 		
 		//allow access only if session exists
@@ -32,20 +30,12 @@ public class DashboardSrv extends HttpServlet {
 			response.sendRedirect("/login");
 		}
 		else {
-			ArrayList<Event> events = EventServiceImpl.getEvents();
+			int event_id = Integer.parseInt(request.getParameter("eid"));
 			
-			request.setAttribute("events", events);
+			EventServiceImpl.deleteEvent(event_id);
 			
-			request.getRequestDispatcher("/WEB-INF/views/user/dashboard.jsp").forward(request, response);
+			response.sendRedirect("/dashboard");
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

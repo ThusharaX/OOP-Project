@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import model.ticket.Ticket;
+import model.user.User;
 import util.DBConnect;
 
 /**
@@ -25,7 +26,7 @@ public class TicketServiceImpl {
 		try {
 			con = DBConnect.getConnection();
 			stmt = con.createStatement();
-			String sql = "INSERT INTO `ticket` ( `event_id`, `user_id`,'expiry_date') VALUES  ('" + ticket.getEvent_id() + "', '" + ticket.getUser_id() + "', '" + ticket.getExpiry_date() + "');";
+			String sql = "INSERT INTO `ticket` ( `event_id`, `user_id`, `expiry_date`) VALUES  ('" + ticket.getEvent_id() + "', '" + ticket.getUser_id() + "', '" + ticket.getExpiry_date() + "');";
 			stmt.executeUpdate(sql);
 		}
 		catch (Exception e) {
@@ -33,6 +34,6 @@ public class TicketServiceImpl {
 		}
 		
 	}
-
-
+	
+	
 }

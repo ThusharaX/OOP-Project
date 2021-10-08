@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.event.Event;
+import model.user.User;
 import util.DBConnect;
 
 /**
@@ -121,5 +122,62 @@ public class EventServiceImpl {
 		}
 		
 		return events;
+	}
+	
+	public static void updateAvailableTickets(int ticketCount, int eventID) {
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "UPDATE `event` SET `available_tickets`='" + ticketCount + "'WHERE `id`='" + eventID + "';";
+			stmt.executeUpdate(sql);
+		}
+		catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void addEvent(Event event) {
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "INSERT INTO `event` (`name`, `description`, `date`, `time`, `available_tickets`, `event_manager_id`, `status`, `online_event`, `category_id`, `venue`) VALUES ('" + event.getName() + "', '" + event.getDescription() + "', '" + event.getDate() + "', '" + event.getTime() + "', '" + event.getAvailableTickets() + "', '" + event.getEventManagerId() + "', '" + event.getStatus() + "', '" + event.getOnlineEvent() + "', '" + event.getCategoryId() + "', '" + event.getVenue() + "');";
+			stmt.executeUpdate(sql);
+		}
+		catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+	}
+	
+	public static void updateEvent(Event event) {
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "UPDATE `event` SET `name`='" + event.getName() + "',`description`='" + event.getDescription() + "', `date`='" + event.getDate() + "', `time`='" + event.getTime() + "', `available_tickets`='" + event.getAvailableTickets() + "', `event_manager_id`='" + event.getEventManagerId() + "', `status`='" + event.getStatus() + "', `online_event`='" + event.getOnlineEvent() + "', `category_id`='" + event.getCategoryId() + "', `venue`='" + event.getVenue() + "' WHERE `id`='" + event.getId() + "';";
+			stmt.executeUpdate(sql);
+		}
+		catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+		
+	}
+
+	public static void deleteEvent(int eid) {
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "DELETE FROM `event` WHERE `id`='" + eid + "';";
+			stmt.executeUpdate(sql);
+		}
+		catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
 	}
 }

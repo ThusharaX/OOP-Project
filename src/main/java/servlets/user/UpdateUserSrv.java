@@ -61,6 +61,8 @@ public class UpdateUserSrv extends HttpServlet {
 		UserServiceImpl usimp = new UserServiceImpl();
 		usimp.updateUser(user);
 		
+		session.setAttribute("fname", fname);
+		
 		response.sendRedirect("/profile");
 	}
 

@@ -9,6 +9,8 @@
 	String role = (String)session.getAttribute("role");
 %>
 
+<a href="/profile" class="btn btn-primary">Profile</a>
+
 <c:choose>
     <c:when test="${role.equals('admin')}">
     	<h1 class="text-3xl font-bold mb-4">Admin Dashboard</h1>
@@ -26,7 +28,6 @@
     </c:when>
 </c:choose>
 
-<a href="/profile" class="btn btn-primary">Profile</a>
 
 
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>

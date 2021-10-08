@@ -5,6 +5,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.user.User"%>
 
+
+
 <%
 	ArrayList<User> users = (ArrayList<User>)request.getAttribute("users");
  
@@ -62,5 +64,7 @@
 <button type="button" class="btn btn-primary">
   Notifications <span class="badge bg-danger">4</span>
 </button>
+
+<script src="${pageContext.request.contextPath}/js/home.js"></script>
 
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
