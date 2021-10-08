@@ -39,7 +39,7 @@
 				Active
 		</p>
 		</br>
-        <a href="bookTicket?id=${event.getId()}" class="btn btn-success">
+        <a href="add-ticket?eid=${event.getId()}" class="btn btn-success">
 			<i class="fa fa-ticket-alt"></i> Attend
 		</a>
 

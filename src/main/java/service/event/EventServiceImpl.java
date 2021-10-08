@@ -122,4 +122,19 @@ public class EventServiceImpl {
 		
 		return events;
 	}
+	
+	public static void updateAvailableTickets(int ticketCount, int eventID) {
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "UPDATE `event` SET `available_tickets`='" + ticketCount + "'WHERE `id`='" + eventID + "';";
+			stmt.executeUpdate(sql);
+		}
+		catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+		
+	}
 }

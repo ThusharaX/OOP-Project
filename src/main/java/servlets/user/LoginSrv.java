@@ -36,6 +36,7 @@ public class LoginSrv extends HttpServlet {
 			HttpSession session = request.getSession();
 			
 			session.setAttribute("id", user.getId());
+			session.setAttribute("fname", user.getFname());
 			session.setAttribute("role", user.getRole());
 			
 			//setting session to expiry in 30 mins
