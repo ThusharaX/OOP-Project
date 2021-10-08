@@ -30,7 +30,7 @@
 	
 	        <label for="role">Role</label>
 	        <select class="form-control" id="role" name="role">
-	            <option value="admin">Admin</option>
+	            <!-- <option value="admin">Admin</option> -->
 	            <option value="event_manager">Event Manager</option>
 	            <option value="attendee">Attendee</option>
 	        </select>
