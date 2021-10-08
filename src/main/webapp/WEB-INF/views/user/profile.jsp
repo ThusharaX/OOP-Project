@@ -45,6 +45,7 @@
 								${user.getRole()}
 							</p>
 							
+							</br>
 							
 							<a href="/update-user" class="btn btn-success">Update</a>
 
@@ -75,7 +76,8 @@
 							      </div>
 							    </div>
 							  </div>
-							</div> 
+							</div>
+							 
 						</div>
 					</div>
 				</div>
@@ -83,7 +85,6 @@
 		</div>
 	</div>
 </div>
-
 
 
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
