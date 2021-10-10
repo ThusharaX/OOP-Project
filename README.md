@@ -1,1 +1,3 @@
-# OOP-Project
+# Event Management System
+
+OOP-Project
