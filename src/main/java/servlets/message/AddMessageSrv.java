@@ -31,7 +31,7 @@ public class AddMessageSrv extends HttpServlet {
 		
 		
 		
-		response.sendRedirect("/");
+		response.sendRedirect("/messages");
 	}
 
 }

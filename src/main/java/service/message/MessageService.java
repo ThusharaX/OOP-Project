@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import model.message.Message;
 import util.DBConnect;
 
-//################################# Display message ########################################
+//################################# Display message ##############################################
 public class MessageService {
 	
 	static Connection con = null;
@@ -60,6 +60,66 @@ public class MessageService {
 				System.out.println(e.getMessage());
 			}		
 		}				
-	}
+	
 
 //############################################# Update Message ####################################
+
+	public static void UpdateMessage(Message message) {
+	
+	try {
+		con = DBConnect.getConnection();
+		stmt = con.createStatement();
+		String sql = "UPDATE `message` SET `name`='" + message.getName() + "', `email`='" + message.getEmail() + "', `subject`='" + message.getSubject() + "', `message`='" + message.getMessage() + "';";
+		stmt.executeUpdate(sql);
+	}
+	catch (Exception e) {
+		System.out.print(e);
+		e.printStackTrace();
+	}
+	
+}
+
+//########################################### Delete Message  ########################################
+
+
+	public static void DeleteMessage(int message_id) {
+	
+	try {
+		con = DBConnect.getConnection();
+		stmt = con.createStatement();
+		String sql = "DELETE FROM `message` WHERE `id`='" + message_id + "';";
+		stmt.executeUpdate(sql);
+	}
+	catch (Exception e) {
+		System.out.print(e);
+		e.printStackTrace();
+	}
+}
+
+//#########################################################################################################
+
+	public static Message getMessageByID(int message_id) {
+
+		Message message = new Message();
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "SELECT * FROM message WHERE id = '" + message_id + "'";
+			rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				message.setId(rs.getInt("id"));
+				message.setName(rs.getString("name"));
+				message.setEmail(rs.getString("email"));
+				message.setSubject(rs.getString("subject"));
+				message.setMessage(rs.getString("message"));
+				
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+}
