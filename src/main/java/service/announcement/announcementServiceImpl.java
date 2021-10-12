@@ -79,7 +79,7 @@ public class announcementServiceImpl {
     	return isSuccess;
     }
     
-    public static boolean updateannouncement(String id, String title, String description, String created_at) {
+    public static boolean updateannouncement(int id, String title, String description, String created_at) {
     	
     	try {
     		

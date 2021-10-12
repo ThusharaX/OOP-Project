@@ -21,7 +21,7 @@ import service.event.EventServiceImpl;
 /**
  * Servlet implementation class UpdateAnnouncementSrv
  */
-@WebServlet("/updateAnnouncement")
+@WebServlet("/updateannouncement")
 public class UpdateAnnouncementSrv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,13 +38,24 @@ public class UpdateAnnouncementSrv extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("cusid"));
 		
-		String id = request.getParameter("cusid");
 		String title = request.getParameter("title");
 		String description = request.getParameter("description");
 		String created_at = request.getParameter("created_at");
 		
 		
+
+		announcement A = new announcement(id ,title , description , created_at);
+	
+	
+		announcementServiceImpl.updateannouncement(id, title, description, created_at); 
+	
+	
+	response.sendRedirect("/displayannouncement");
+
+
+		/*
 		boolean isTrue;
 		
 		isTrue = announcementServiceImpl.updateannouncement(id, title, description, created_at);
@@ -64,7 +75,7 @@ public class UpdateAnnouncementSrv extends HttpServlet {
 			
 			RequestDispatcher dis = request.getRequestDispatcher("Unsuccess.jsp");
 			dis.forward(request, response);
-		}
+		}*/
 	}
 
 }
