@@ -3,12 +3,15 @@
 </jsp:include>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.user.User"%>
+<%@page import="model.event.Event"%>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user/profile.css"/>
 
 <%
     User user = (User)request.getAttribute("user");
+	ArrayList<Event> eventsForAttendee = (ArrayList<Event>)request.getAttribute("eventsForAttendee");
 %>
 
 
@@ -86,5 +89,9 @@
 	</div>
 </div>
 
+
+<c:forEach var="event" items="${eventsForAttendee}">
+	<h1>${event.getName()}</h1>
+</c:forEach>
 
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>

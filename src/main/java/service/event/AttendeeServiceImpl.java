@@ -6,7 +6,10 @@ package service.event;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
+import model.event.Attendee;
+import model.event.Event;
 import util.DBConnect;
 
 /**
@@ -53,5 +56,32 @@ public class AttendeeServiceImpl {
 			e.printStackTrace();
 		}
 		return isAttendee;
+	}
+	
+	public static ArrayList<Attendee> getAttendeeByUserId(int user_id) {
+		
+		ArrayList<Attendee> attendees = new ArrayList<>();
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "SELECT * FROM attendee_list WHERE attendee_id = '" + user_id + "'";
+			rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				int id = rs.getInt(1);
+				int event_id = rs.getInt(2);
+				int attendee_id = rs.getInt(3);
+				
+				Attendee a = new Attendee(id, event_id, attendee_id);
+				
+				attendees.add(a);
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return attendees;
 	}
 }
