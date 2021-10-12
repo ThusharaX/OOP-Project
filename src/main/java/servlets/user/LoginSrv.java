@@ -18,7 +18,15 @@ public class LoginSrv extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		getServletContext().getRequestDispatcher("/WEB-INF/views/user/login.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		
+		//allow access only if session exists
+		if(session.getAttribute("id") != null){
+			response.sendRedirect("/profile");
+		}
+		else {
+			getServletContext().getRequestDispatcher("/WEB-INF/views/user/login.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,8 +47,8 @@ public class LoginSrv extends HttpServlet {
 			session.setAttribute("fname", user.getFname());
 			session.setAttribute("role", user.getRole());
 			
-			//setting session to expiry in 30 mins
-			session.setMaxInactiveInterval(30*60);
+			//setting session to expiry in 60 mins
+			session.setMaxInactiveInterval(60*60);
 			
 			response.sendRedirect("/");
 		}
