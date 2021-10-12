@@ -69,7 +69,7 @@ public class MessageService {
 	try {
 		con = DBConnect.getConnection();
 		stmt = con.createStatement();
-		String sql = "UPDATE `message` SET `name`='" + message.getName() + "', `email`='" + message.getEmail() + "', `subject`='" + message.getSubject() + "', `message`='" + message.getMessage() + "';";
+		String sql = "UPDATE `message` SET `name`='" + message.getName() + "', `email`='" + message.getEmail() + "', `subject`='" + message.getSubject() + "', `message`='" + message.getMessage() +"' WHERE `id`='" + message.getId() + "';";
 		stmt.executeUpdate(sql);
 	}
 	catch (Exception e) {
@@ -120,6 +120,6 @@ public class MessageService {
 		catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		return null;
+		return message;
 	}
 }

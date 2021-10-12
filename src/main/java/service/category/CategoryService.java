@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import model.category.Category;
 import util.DBConnect;
 
@@ -53,7 +52,7 @@ public class CategoryService {
 	}
 	
 	
-//########################################### Add Category ########################################
+//########################################### Add Category #######################
 	
 	
 		
@@ -68,6 +67,73 @@ public class CategoryService {
 			catch (Exception e) {
 				System.out.println(e.getMessage());
 			}		
-		}				
+		}
+		
+//############################################# Update Category ##################
+
+		public static void UpdateCategory(Category category) {
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "UPDATE `category` SET `name`='" + category.getName() + "', `description`='" + category.getDiscription()+"' WHERE `id`='" + category.getId() + "';";
+			stmt.executeUpdate(sql);
+		}
+		catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+		
 	}
+//########################################### Delete Category  ###################
+
+
+		public static void DeleteCategory(int category_id) {
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "DELETE FROM `category` WHERE `id`='" + category_id + "';";
+			stmt.executeUpdate(sql);
+		}
+		catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+	}
+//###################################################################################
+
+		public static Category getCategoryByID(int category_id) {
+			
+			Category category = new Category();
+			
+			try {
+				con = DBConnect.getConnection();
+				stmt = con.createStatement();
+				String sql = "SELECT * FROM category WHERE id = '" + category_id + "'";
+				rs = stmt.executeQuery(sql);
+				
+				while (rs.next()) {
+					category.setId(rs.getInt("id"));
+					category.setName(rs.getString("name"));
+					category.setDiscription(rs.getString("discription"));
+					
+				}
+			}
+			catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			
+			return category;
+		}
+}
+//##################################################################################
+
+
+
+
+
+
+
+
 

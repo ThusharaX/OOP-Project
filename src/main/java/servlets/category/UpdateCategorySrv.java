@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model.category.Category;
 import service.category.CategoryService;
+import service.message.MessageService;
 
 /**
  * Servlet implementation class UpdateCategory
@@ -42,9 +43,9 @@ public class UpdateCategorySrv extends HttpServlet {
 	
 		
 		Category category = new Category(id,name , description);
-		
-		CategoryService usimp = new CategoryService();
+		 CategoryService usimp = new CategoryService();
 		usimp.UpdateCategory(category);
+		
 		
 		response.sendRedirect("/categories");
 	}	
