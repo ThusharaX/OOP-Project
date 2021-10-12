@@ -2,22 +2,29 @@ package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
-public class DBConnect {
-	private static String url = "jdbc:mysql://eu-cdbr-west-01.cleardb.com/heroku_fb072d8cac3df9f";
-	private static String user = "b30683c7106749";
-	private static String pass = "ed955783";
-    private static Connection con;
+public class DBConnect extends CommonUtil{
+	
+	private static String url = properties.getProperty(CommonConstants.URL);
+	private static String userName = properties.getProperty(CommonConstants.USERNAME);
+	private static String password = properties.getProperty(CommonConstants.PASSWORD);
+	private static String driverName = properties.getProperty(CommonConstants.DRIVER_NAME);
+	private static Connection con;
     
     public static Connection getConnection() {
+    	
     	try {
-        	Class.forName("com.mysql.jdbc.Driver");
-        	
-        	con = DriverManager.getConnection(url, user, pass);
-        }
-        catch(Exception e) {
-        	e.printStackTrace();
-        }
+			if (con == null || con.isClosed()) {
+				Class.forName(driverName);
+				con = DriverManager.getConnection(url, userName, password);
+			}
+		
+		}catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
+			System.out.println("Database connection is not success!!!");
+		}
         
         return con;
     }
