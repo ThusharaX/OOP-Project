@@ -1,4 +1,4 @@
-package servlets.category;
+package servlets.message;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,23 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import service.announcement.AnnouncementServiceImpl;
-import service.category.CategoryService;
+import service.event.EventServiceImpl;
+import service.message.MessageService;
 
 /**
- * Servlet implementation class DeleteCategorySrv
+ * Servlet implementation class DeleteMessageSrv
  */
-@WebServlet("/delete-category")
-public class DeleteCategorySrv extends HttpServlet {
+@WebServlet("/delete-message")
+public class DeleteMessageSrv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DeleteCategorySrv() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -38,11 +30,11 @@ public class DeleteCategorySrv extends HttpServlet {
 			response.sendRedirect("/login");
 		}
 		else {
-			int cid = Integer.parseInt(request.getParameter("cid"));
+			int mid = Integer.parseInt(request.getParameter("mid"));
 			
-			CategoryService.deleteCateory(cid);
+			MessageService.deleteMessage(mid);
 			
-			response.sendRedirect("/categories");
+			response.sendRedirect("/messages");
 		}
 	}
 

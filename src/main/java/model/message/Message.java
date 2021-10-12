@@ -10,6 +10,32 @@ public class Message {
 	private String create_at;
 	
 	
+	
+	/**
+	 * 
+	 */
+	public Message() {
+	}
+
+	
+
+	/**
+	 * @param id
+	 * @param name
+	 * @param email
+	 * @param subject
+	 * @param message
+	 */
+	public Message(int id, String name, String email, String subject, String message) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.subject = subject;
+		this.message = message;
+	}
+
+
+
 	public Message(int id, String name, String email, String subject, String message, String create_at) {
 		this.id = id;
 		this.name = name;

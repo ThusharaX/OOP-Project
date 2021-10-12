@@ -6,7 +6,7 @@
 
 <h1 class="text-3xl font-bold mb-4">Contact Us</h1>
 
-<form class="flex justify-center" action="/AddMessages" method="post">
+<form class="flex justify-center" action="/contact-us" method="post">
 	    <div class="form-group">	
 	       
 	        <label for="name">Name</label>
