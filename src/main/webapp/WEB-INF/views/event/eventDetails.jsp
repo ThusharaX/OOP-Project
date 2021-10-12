@@ -3,11 +3,14 @@
 </jsp:include>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.event.Event"%>
+<%@page import="model.feedback.Feedback"%>
 
 
 <%
     Event event = (Event)request.getAttribute("event");
+	ArrayList<Feedback> feedbacks = (ArrayList<Feedback>)request.getAttribute("feedbacks");
 %>
 
 
@@ -58,5 +61,26 @@
 		</a>
     </c:otherwise>
 </c:choose>
+
+</br>
+</br>
+
+<h1>Feedbacks</h1>
+<%
+	for(Feedback feedback : feedbacks)
+	{
+	    out.print("Id: " + feedback.getDescription());
+	    //out.print("<br/>");
+	    
+	    if ((Integer)session.getAttribute("id") == feedback.getUser_id()) {
+	    	out.print("<a class='btn btn-success btn-sm' href='/update-feedback?fid=" + feedback.getId() + "'>Update</a>");
+	    	out.print("<a class='btn btn-danger btn-sm' href='/delete-feedback?fid=" + feedback.getId() + "&eid=" + event.getId() + "'>Delete</a>");
+	    }
+	    
+	    out.print("<br/>");
+	    out.print("<br/>");
+	}
+%>
+
 
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>

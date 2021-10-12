@@ -1,78 +1,18 @@
 <jsp:include page="/WEB-INF/views/header.jsp">
-	<jsp:param name="title" value="Displayannouncement"/>
+	<jsp:param name="title" value="Announcements"/>
 </jsp:include>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="model.announcement.announcement"%>
+<%@page import="model.announcement.Announcement"%>
+
 
 <%
-
-
-
-	ArrayList<announcement> announcements = (ArrayList<announcement>)request.getAttribute("announcements");
- 
-    for(announcement announcement : announcements)
-    {
-        out.print("Id: " + announcement.getId());
-        out.print("<br/>");
-        out.print("Title: " + announcement.getTitle());
-        out.print("<br/>");
-        out.print("Description: " + announcement.getDescription());
-        out.print("<br/>");
-        out.print("Created_at: " + announcement.getCreated_at());
-        out.print("<br/>");
-
-    }
+    ArrayList<Announcement> announcements = (ArrayList<Announcement>)request.getAttribute("Announcement");
 %>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<c:forEach var="announcement" items="${announcements}">
+	<h1>${announcement.getTitle()}</h1>
+</c:forEach>
 
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>

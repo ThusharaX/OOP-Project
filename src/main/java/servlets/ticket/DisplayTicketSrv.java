@@ -27,7 +27,7 @@ public class DisplayTicketSrv extends HttpServlet {
 		
 		ArrayList<Ticket> tickets = TicketServiceImpl.getTickets();
 		
-		 request.setAttribute("tickets", tickets);
+		request.setAttribute("tickets", tickets);
 		
 		getServletContext().getRequestDispatcher("/WEB-INF/views/ticket/displayTicket.jsp").forward(request, response);
 	}
@@ -39,8 +39,7 @@ public class DisplayTicketSrv extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }

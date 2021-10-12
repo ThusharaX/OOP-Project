@@ -1,8 +1,6 @@
-package servlets.user;
+package servlets.feedback;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,25 +8,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.announcement.Announcement;
-import model.event.Event;
-import model.feedback.Feedback;
-import service.announcement.AnnouncementServiceImpl;
 import service.event.EventServiceImpl;
 import service.feedback.FeedbackServiceImpl;
 
 /**
- * Servlet implementation class DashboardSrv
+ * Servlet implementation class DeleteFeedbackSrv
  */
-@WebServlet("/dashboard")
-public class DashboardSrv extends HttpServlet {
+@WebServlet("/delete-feedback")
+public class DeleteFeedbackSrv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		HttpSession session = request.getSession();
 		
 		//allow access only if session exists
@@ -36,25 +30,12 @@ public class DashboardSrv extends HttpServlet {
 			response.sendRedirect("/login");
 		}
 		else {
-			int user_id = (int) session.getAttribute("id");
-			System.out.println(user_id);
+			int fid = Integer.parseInt(request.getParameter("fid"));
+			int eid = Integer.parseInt(request.getParameter("eid"));
 			
-			if(session.getAttribute("role").equals("admin")){
-				
-				ArrayList<Announcement> announcements = AnnouncementServiceImpl.getAnnouncements();
-				request.setAttribute("announcements", announcements);
-			}
-			else if(session.getAttribute("role").equals("event_manager")){
-				
-				ArrayList<Event> events = EventServiceImpl.getEvents();				
-				request.setAttribute("events", events);
-			}
-			else if(session.getAttribute("role").equals("attendee")){
-				
-				// Data for attendee dashboard
-			}
+			FeedbackServiceImpl.deleteFeedback(fid);
 			
-			request.getRequestDispatcher("/WEB-INF/views/user/dashboard.jsp").forward(request, response);
+			response.sendRedirect("/eventDetails?id=" + eid + "");
 		}
 	}
 

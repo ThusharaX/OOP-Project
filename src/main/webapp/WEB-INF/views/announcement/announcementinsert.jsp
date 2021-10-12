@@ -1,21 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<jsp:include page="/WEB-INF/views/header.jsp">
+	<jsp:param name="title" value="Add Announcement"/>
+</jsp:include>
 	
-	<form action="insert" method="post">
-		Title <input type="text" name="title"><br>
-		Description <input type="text" name="description"><br>
-		Date <input type="text" name="created_at"><br>
-		
-		<input type="submit" name="submit" value="Add">
-	</form>
+
+<form class="flex justify-center" action="/create-announcement" method="post">
+    <div class="form-group">
+        <label for="title">Announcement Title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Announcement Title">
+
+        <label for="description">Announcement Description</label>
+        <input type="text" class="form-control" id="description" name="description" placeholder="Announcement Description">
+        
+        <button type="submit" class="btn btn-primary">Add Announcement</button>
+
+    </div>
+</form>
 
 
-</body>
-</html>
+<jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>

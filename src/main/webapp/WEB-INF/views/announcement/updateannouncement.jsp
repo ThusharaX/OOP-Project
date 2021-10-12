@@ -1,56 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
-	<style type="text/css">
-		table {
-  			border-collapse: collapse;
-		}
+<jsp:include page="/WEB-INF/views/header.jsp">
+	<jsp:param name="title" value="Update Announcement"/>
+</jsp:include>
 
-		table, th, td {
-		  border: 1px solid black;
-		}
-	</style>
-</head>
-<body>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.announcement.Announcement"%>
 
-	<%
-		String id = request.getParameter("id");
-		String title = request.getParameter("title");
-		String description = request.getParameter("description");
-		String created_at = request.getParameter("created_at");
-		
-	%>
-	
-	
-	<form action="updateannouncement?cusid=${announcement.getId()}' method="post">
-	<table>
-		<tr>
-			<td>Customer ID</td>
-			<td><input value="${announcement.getId()}" type="text" name="cusid"></td>
-			
-    
-		</tr>
-		<tr>
-			<td>Title</td>
-			<td><input value="${announcement.getTitle()}"  type="text" name="title" value="<%= title %>"></td>
-		</tr>
-		<tr>
-		<td>Description</td>
-		<td><input value="${announcement.getDescription()}"  type="text" name="description" value="<%= description %>"></td>
-	</tr>
-	<tr>
-		<td>Created_at</td>
-		<td><input value="${announcement.getCreated_at()}"  type="text" name="created_at" value="<%= created_at %>"></td>
-	</tr>
-			
-	</table>
-	<br>
-	<input type="submit" name="submit" value="Update">
-	</form>
+<%
+	Announcement announcement = (Announcement)request.getAttribute("announcement");
+%>	
 
-</body>
-</html>
+<form class="flex justify-center" action="/update-announcement?aid=${announcement.getId()}" method="post">
+    <div class="form-group">
+        <label for="title">Announcement Title</label>
+        <input value="${announcement.getTitle()}" type="text" class="form-control" id="title" name="title" placeholder="Announcement Title">
+
+        <label for="description">Announcement Description</label>
+        <input value="${announcement.getDescription()}" type="text" class="form-control" id="description" name="description" placeholder="Announcement Description">
+        
+        <button type="submit" class="btn btn-primary">Update Announcement</button>
+
+    </div>
+</form>
+
+
+<jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>

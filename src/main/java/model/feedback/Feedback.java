@@ -44,6 +44,24 @@ public class Feedback {
 		this.description = description;
 		this.rating = rating;
 	}
+	
+	
+
+
+	/**
+	 * @param id
+	 * @param event_id
+	 * @param user_id
+	 * @param description
+	 * @param rating
+	 */
+	public Feedback(int id, int event_id, int user_id, String description, int rating) {
+		this.id = id;
+		this.event_id = event_id;
+		this.user_id = user_id;
+		this.description = description;
+		this.rating = rating;
+	}
 
 
 	/**
