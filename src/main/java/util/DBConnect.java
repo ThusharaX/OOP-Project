@@ -15,10 +15,9 @@ public class DBConnect extends CommonUtil{
     public static Connection getConnection() {
     	
     	try {
-			if (con == null || con.isClosed()) {
-				Class.forName(driverName);
-				con = DriverManager.getConnection(url, userName, password);
-			}
+//			if (con == null || con.isClosed()) {}
+    		Class.forName(driverName);
+			con = DriverManager.getConnection(url, userName, password);
 		
 		}catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

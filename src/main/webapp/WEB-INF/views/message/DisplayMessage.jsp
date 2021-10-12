@@ -1,5 +1,5 @@
 <jsp:include page="/WEB-INF/views/header.jsp">
-	<jsp:param name="title" value="Category display"/>
+	<jsp:param name="title" value="Messages"/>
 </jsp:include>
 
 
