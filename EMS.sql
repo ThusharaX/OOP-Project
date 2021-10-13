@@ -59,11 +59,11 @@ CREATE TABLE IF NOT EXISTS `event` (
 INSERT INTO `event` (`id`, `name`, `description`, `date`, `time`, `available_tickets`, `event_manager_id`, `status`, `online_event`, `category_id`, `venue`)
 VALUES
     (1, 'Sliit Convacation', '2020 IT students Convacation.They are going celebrate  this occation', '2020-01-01', '12:00:00', 10, 2, 1, 0, 1, 'Colombo'),
-    (2, 'Niki's Wedding', 'Niki`s and Anjana`s Wedding day', '2020-01-01', '12:00:00', 10, 3, 0, 0, 2, 'Kandy'),
-    (3, 'Dilkis`s Birthday', 'Ms.Dilki`s 21st Birthday', '2020-01-01', '12:00:00', 10, 2, 1, 1, 3, ''),
+    (2, 'Niki is going to wed', 'Niki and Anjana Wedding day', '2020-01-01', '12:00:00', 10, 3, 0, 0, 2, 'Kandy'),
+    (3, 'Dilki Birthday', 'Ms.Dilki 21st Birthday', '2020-01-01', '12:00:00', 10, 2, 1, 1, 3, 'minuwangoda'),
     (4, 'Annuel Meet Binery Matter', 'Binery matter Genious Software Developers annual meet', '2020-01-01', '12:00:00', 10, 2, 1, 0, 1, 'Colombo'),
-    (5, 'Homie`s Get together', 'After long tine they are going tomeet each other on this day.join withe them', '2020-01-01', '12:00:00', 10, 3, 1, 0, 2, 'Kandy'),
-    (6, 'Thushar's Birthday', 'Say Happy Birthday to thushara on this day', '2020-01-01', '12:00:00', 10, 2, 0, 1, 3, '');
+    (5, 'Homies Get together', 'After long tine they are going tomeet each other on this day.join withe them', '2020-01-01', '12:00:00', 10, 3, 1, 0, 2, 'Kandy'),
+    (6, 'Thushars Birthday', 'Say Happy Birthday to thushara on this day', '2020-01-01', '12:00:00', 10, 2, 0, 1, 3, 'Gampaha');
 
 
 CREATE TABLE IF NOT EXISTS `attendee_list` (
