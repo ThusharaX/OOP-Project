@@ -10,5 +10,6 @@
 <body>
 	<h1>Status: 500</h1>
 	<h2>Internal Server Error</h2>
+	<img alt="500" src="https://img.devrant.com/devrant/rant/r_2261496_576CW.jpg">
 </body>
 </html>
