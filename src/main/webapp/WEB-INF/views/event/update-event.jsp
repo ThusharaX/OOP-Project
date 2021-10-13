@@ -1,5 +1,5 @@
 <jsp:include page="/WEB-INF/views/header.jsp">
-	<jsp:param name="title" value="Update User"/>
+	<jsp:param name="title" value="Update Event"/>
 </jsp:include>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -12,9 +12,9 @@
 	//request.setAttribute("event_id", event.getId());
 %>
 
-<h1 class="text-3xl font-bold mb-4">Update Event</h1>
+<h1 class="flex justify-center text-3xl font-bold mb-4">Update Event</h1>
 
-<form class="flex justify-center" action='/update-event?eid=${event.getId()}' method="post">
+<form class="max-w-lg mx-auto" action='/update-event?eid=${event.getId()}' method="post">
     <div class="form-group">
         <label for="name">Event Name</label>
         <input value="${event.getName()}" type="text" class="form-control" id="name" name="name" placeholder="Event Name">

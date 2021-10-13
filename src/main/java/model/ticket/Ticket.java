@@ -36,6 +36,19 @@ public class Ticket {
 		this.expiry_date = expiry_date;
 	}
 
+	
+
+	/**
+	 * @param id
+	 * @param event_id
+	 * @param user_id
+	 */
+	public Ticket(int id, int event_id, int user_id) {
+		this.id = id;
+		this.event_id = event_id;
+		this.user_id = user_id;
+	}
+
 
 	/**
 	 * @return the id

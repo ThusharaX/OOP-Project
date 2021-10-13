@@ -1,9 +1,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.announcement.Announcement"%>
+<%@page import="model.category.Category"%>
 
 <%
 	ArrayList<Announcement> announcements = (ArrayList<Announcement>)request.getAttribute("announcements");
+	ArrayList<Category> categories = (ArrayList<Category>)request.getAttribute("categories");	
 %>
 
 <h1>Admin Panel</h1>
@@ -30,6 +32,32 @@
 	    		
 	    		<td><a href="/update-announcement?aid=${announcement.getId()}" class="btn btn-success btn-sm">Update</a></td>
 	    		<td><a href="/delete-announcement?aid=${announcement.getId()}" class="btn btn-danger btn-sm">Delete</a></td>
+	    	</tr>
+		</c:forEach>
+	  </tbody>
+	</table>
+</div>
+
+<a href="/AddCategory" class="btn btn-primary">Create Category</a>
+
+<div class="table-responsive">
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+		    <th scope="col">ID</th>
+			<th scope="col">Name</th>
+			<th scope="col">Description</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <c:forEach var="category" items="${categories}">
+	    	<tr>
+	    		<th scope="row">${category.getId()}</th>
+				<td>${category.getName()}</td>
+				<td>${category.getDiscription()}</td>
+	    		
+	    		<td><a href="/update-category?cid=${category.getId()}" class="btn btn-success btn-sm">Update</a></td>
+	    		<td><a href="/delete-category?cid=${category.getId()}" class="btn btn-danger btn-sm">Delete</a></td>
 	    	</tr>
 		</c:forEach>
 	  </tbody>

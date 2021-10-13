@@ -11,11 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.announcement.Announcement;
+import model.category.Category;
 import model.event.Event;
 import model.feedback.Feedback;
 import service.announcement.AnnouncementServiceImpl;
+import service.category.CategoryService;
 import service.event.EventServiceImpl;
 import service.feedback.FeedbackServiceImpl;
+import servlets.category.CategoryDisplaySrv;
 
 /**
  * Servlet implementation class DashboardSrv
@@ -42,11 +45,15 @@ public class DashboardSrv extends HttpServlet {
 			if(session.getAttribute("role").equals("admin")){
 				
 				ArrayList<Announcement> announcements = AnnouncementServiceImpl.getAnnouncements();
+				ArrayList<Category> categories = CategoryService.getCategories();
+				
 				request.setAttribute("announcements", announcements);
+				request.setAttribute("categories", categories);
 			}
 			else if(session.getAttribute("role").equals("event_manager")){
 				
-				ArrayList<Event> events = EventServiceImpl.getEvents();				
+				// Get events for Event Manager
+				ArrayList<Event> events = EventServiceImpl.getEventsByUserId(user_id);				
 				request.setAttribute("events", events);
 			}
 			else if(session.getAttribute("role").equals("attendee")){

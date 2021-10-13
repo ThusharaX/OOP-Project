@@ -9,7 +9,7 @@
 	String role = (String)session.getAttribute("role");
 %>
 
-<a href="/profile" class="btn btn-primary">Profile</a>
+<!-- <a href="/profile" class="btn btn-primary">Profile</a> -->
 
 <c:choose>
     <c:when test="${role.equals('admin')}">

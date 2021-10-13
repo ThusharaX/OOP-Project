@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-
+import model.event.Event;
 import model.ticket.Ticket;
 import util.DBConnect;
 
@@ -25,7 +25,6 @@ public class TicketServiceImpl {
 	
 	
 	// Add ticket
-	
 	public static void createTicket(Ticket ticket) {
 	
 		try {
@@ -41,7 +40,6 @@ public class TicketServiceImpl {
 	}
 
 	// Display ticket
-
 	public static ArrayList<Ticket> getTickets() {
 		
 		 ArrayList<Ticket> tickets = new ArrayList<>();
@@ -72,5 +70,59 @@ public class TicketServiceImpl {
 		
 		}
 	
+	// Get Ticket By ID
+	public static Ticket getTicketByID(int ticket_id) {
+
+		Ticket ticket = new Ticket();
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "SELECT * FROM ticket WHERE id = '" + ticket_id + "'";
+			rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				ticket.setId(rs.getInt("id"));
+				ticket.setEvent_id(rs.getInt("event_id"));
+				ticket.setUser_id(rs.getInt("user_id"));
+				ticket.setExpiry_date(rs.getString("expiry_date"));
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return ticket;
+	}
 	
+	// Update Ticket
+	public static void updateTicket(Ticket ticket) {
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "UPDATE `ticket` SET `event_id`='" + ticket.getEvent_id() + "',`user_id`='" + ticket.getUser_id() + "', `expiry_date`='" + ticket.getExpiry_date() + "' WHERE `id`='" + ticket.getId() + "';";
+			stmt.executeUpdate(sql);
+		}
+		catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+		
+	}
+
+	// Delete Ticket
+	public static void deleteTicket(int tid) {
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "DELETE FROM `ticket` WHERE `id`='" + tid + "';";
+			stmt.executeUpdate(sql);
+		}
+		catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+	}
 }

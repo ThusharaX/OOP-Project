@@ -42,7 +42,7 @@ public class DeleteCategorySrv extends HttpServlet {
 			
 			CategoryService.deleteCateory(cid);
 			
-			response.sendRedirect("/categories");
+			response.sendRedirect("/dashboard");
 		}
 	}
 
