@@ -6,66 +6,74 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.event.Event"%>
 <%@page import="model.feedback.Feedback"%>
+<%@page import="model.user.User"%>
 
 
 <%
     Event event = (Event)request.getAttribute("event");
 	ArrayList<Feedback> feedbacks = (ArrayList<Feedback>)request.getAttribute("feedbacks");
+	User event_manager = (User)request.getAttribute("event_manager");
 %>
 
-
-<h2>Id : ${event.getId()}</h2>
-<h2>Name : ${event.getName()}</h2>
-<h2>Description : ${event.getDescription()}</h2>
-<h2>Date : ${event.getDate()}</h2>
-<h2>Time : ${event.getTime()}</h2>
-<h2>AvailableTickets : ${event.getAvailableTickets()}</h2>
-<h2>EventManagerId : ${event.getEventManagerId()}</h2>
-<h2>Category : ${request.getAttribute("category")}</h2>
-
-<c:choose>
-    <c:when test="${event.getOnlineEvent() == 1}">
-        <h2 class="text-green-600">Online</h2>
-        <br />
-    </c:when>    
-    <c:otherwise>
-        <h2 class="text-green-600">${event.getVenue()}</h2>
-        <br />
-    </c:otherwise>
-</c:choose>
-
-
-<c:choose>
-    <c:when test="${event.getStatus() == 1}">
-    	<p class="text-green-600">
-			<b><i class="fas fa-info-circle"></i> Status : </b>
-				Active
-		</p>
-		</br>
-        <a href="add-ticket?eid=${event.getId()}" class="btn btn-success">
-			<i class="fa fa-ticket-alt"></i> Attend
-		</a>
-
-		<a href="/add-feedback?eid=${event.getId()}" class="btn btn-primary">
-			<i class="fas fa-comments"></i> Give Feedback
-		</a>
-    </c:when>    
-    <c:otherwise>
-    	<p class="text-red-600">
-			<b><i class="fas fa-info-circle"></i> Status : </b>
-				Inactive
-		</p>
-		</br>
-        <a href="#" class="btn btn-success disabled">
-			<i class="fa fa-ticket-alt"></i> Attend
-		</a>
-    </c:otherwise>
-</c:choose>
+<div class="bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2">
+            <a href="#">${event.getName()}</a>
+        </div>
+        <div class="text-gray-700 text-base">
+             ${event.getDescription()}
+        </div>
+        <div class="text-gray-700 text-base">
+             Date : ${event.getDate()}
+        </div>
+        <div class="text-gray-700 text-base">
+             Date : ${event.getTime()}
+        </div>
+    </div>
+    <div class="px-6 py-4">
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">${event_manager.getFname()}</span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Tickets : ${event.getAvailableTickets()}</span>
+		        <c:choose>
+		    <c:when test="${event.getOnlineEvent() == 1}">
+        		<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-green-600 mr-2">Online</span>
+		        
+		    </c:when>    
+		    <c:otherwise>
+        		<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-green-600 mr-2">Venue : ${event.getVenue()}</span>
+		        
+		    </c:otherwise>
+		</c:choose>
+    
+    
+	    <c:choose>
+		    <c:when test="${event.getStatus() == 1}">
+				<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-green-600 mr-2">Active</span>
+				</br>
+				</br>
+		        <a href="add-ticket?eid=${event.getId()}" class="btn btn-success">
+					<i class="fa fa-ticket-alt"></i> Attend
+				</a>
+		
+				<a href="/add-feedback?eid=${event.getId()}" class="btn btn-primary">
+					<i class="fas fa-comments"></i> Give Feedback
+				</a>
+		    </c:when>    
+		    <c:otherwise>
+				<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-red-600 mr-2">Inactive</span>
+				</br>
+				</br>
+		        <a href="#" class="btn btn-success disabled">
+					<i class="fa fa-ticket-alt"></i> Attend
+				</a>
+		    </c:otherwise>
+		</c:choose>
+	</div>
+</div>
 
 </br>
 </br>
 
-<h1>Feedbacks</h1>
+<h1 class="text-3xl font-bold mb-4">Feedbacks</h1>
 <%
 	for(Feedback feedback : feedbacks)
 	{
