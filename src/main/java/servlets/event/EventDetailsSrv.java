@@ -12,9 +12,11 @@ import javax.servlet.http.HttpSession;
 
 import model.event.Event;
 import model.feedback.Feedback;
+import model.user.User;
 import service.category.CategoryService;
 import service.event.EventServiceImpl;
 import service.feedback.FeedbackServiceImpl;
+import service.user.UserServiceImpl;
 
 /**
  * Servlet implementation class EventDetailsSrv
@@ -35,6 +37,7 @@ public class EventDetailsSrv extends HttpServlet {
 			response.sendRedirect("/login");
 		}
 		else {
+			int user_id = (int)(session.getAttribute("id"));
 			int event_id = Integer.parseInt(request.getParameter("id"));
 			
 			// Details for event
@@ -43,10 +46,14 @@ public class EventDetailsSrv extends HttpServlet {
 			// Feedbacks for event
 			ArrayList<Feedback> feedbacks = FeedbackServiceImpl.getFeedbackByEventID(event_id);
 			
+			UserServiceImpl usimp = new UserServiceImpl();
+			User event_manager = usimp.getUserByID(user_id);
+			
+			request.setAttribute("event_manager", event_manager);
 			request.setAttribute("event", event);
 			request.setAttribute("feedbacks", feedbacks);
 			
-			// request.setAttribute("category", CategoryService.getCategoryByID(event.getCategoryId()));
+			request.setAttribute("category", CategoryService.getCategoryByID(event.getCategoryId()));
 			
 			request.getRequestDispatcher("/WEB-INF/views/event/eventDetails.jsp").forward(request, response);
 		}

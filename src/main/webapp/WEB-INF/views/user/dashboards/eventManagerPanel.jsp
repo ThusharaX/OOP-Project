@@ -6,8 +6,6 @@
 	ArrayList<Event> events = (ArrayList<Event>)request.getAttribute("events");
 %>
 
-<h1>Event Manager Panel</h1>
-
 <a href="/add-event" class="btn btn-primary">Add event</a>
 
 <div class="table-responsive">

@@ -46,7 +46,7 @@ public class AddCategorySrv extends HttpServlet {
 		
 		
 		
-		response.sendRedirect("/");
+		response.sendRedirect("/dashboard");
 	}
 
 }

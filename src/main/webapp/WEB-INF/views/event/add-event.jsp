@@ -10,7 +10,9 @@
 	ArrayList<Category> categories = (ArrayList<Category>)request.getAttribute("categories");
 %>
 
-<form class="flex justify-center" action="/add-event" method="post">
+<h1 class="flex justify-center text-3xl font-bold mb-4">Add Event</h1>
+
+<form class="max-w-lg mx-auto" action="/add-event" method="post">
     <div class="form-group">
         <label for="name">Event Name</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Event Name">
