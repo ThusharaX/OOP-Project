@@ -33,7 +33,7 @@
 				<td>${feedback.getCreated_at()}</td>
 	    		
 	    		<td><a href="/update-feedback?fid=${feedback.getId()}" class="btn btn-success btn-sm">Update</a></td>
-	    		<td><a href="/delete-feedback?fid=${feedback.getId()}" class="btn btn-danger btn-sm">Delete</a></td>
+	    		<td><a href="/delete-feedback?fid=${feedback.getId()}&eid=${feedback.getEvent_id()}" class="btn btn-danger btn-sm">Delete</a></td>
 	    	</tr>
 		</c:forEach>
 	  </tbody>
