@@ -71,7 +71,8 @@ public class AddTicketSrv extends HttpServlet {
 				
 				TicketServiceImpl.createTicket(ticket);
 				
-				response.sendRedirect("/eventDetails?id=" + event_id);
+				
+				response.sendRedirect("/dashboard");
 			}
 		}
 	}

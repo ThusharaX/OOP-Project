@@ -65,7 +65,7 @@ public class UpdateFeedbackSrv extends HttpServlet {
 		
 		FeedbackServiceImpl.updateFeedback(feedback);
 		
-		response.sendRedirect("/feedbacks");
+		response.sendRedirect("/dashboard");
 	
 	}
 

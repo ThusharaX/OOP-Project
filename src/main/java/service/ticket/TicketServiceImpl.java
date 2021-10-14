@@ -125,4 +125,36 @@ public class TicketServiceImpl {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	// Get Ticket By ID
+		public static ArrayList<Ticket> getTicketByUserID(int uid) {
+
+			ArrayList<Ticket> tickets = new ArrayList<>();
+			
+			try {
+				con = DBConnect.getConnection();
+				stmt = con.createStatement();
+				String sql = "SELECT * FROM Ticket WHERE `user_id`='" + uid + "';";
+				rs = stmt.executeQuery(sql);
+				
+				while (rs.next()) {
+					int id = rs.getInt(1);
+					int event_id = rs.getInt(2);
+					int user_id = rs.getInt(3);
+					String expiry_date = rs.getString(4);
+					
+		
+					Ticket t = new Ticket(id, event_id, user_id,expiry_date);
+					
+					tickets.add(t);
+				}
+			}
+			catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			
+			return tickets;
+		
+		}
 }
