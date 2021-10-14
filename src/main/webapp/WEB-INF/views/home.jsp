@@ -8,15 +8,15 @@
 
 
 <%
-	ArrayList<User> users = (ArrayList<User>)request.getAttribute("users");
+	//ArrayList<User> users = (ArrayList<User>)request.getAttribute("users");
  
-    for(User user : users)
-    {
-        out.print("Id: " + user.getId());
-        out.print("<br/>");
-        out.print("Name: " + user.getFname() + user.getLname());
-        out.print("<br/>");
-    }
+    //for(User user : users)
+    //{
+    //    out.print("Id: " + user.getId());
+    //    out.print("<br/>");
+    //    out.print("Name: " + user.getFname() + user.getLname());
+    //    out.print("<br/>");
+    //}
 %>
 
 <%
@@ -35,35 +35,6 @@
 	//	out.print("Role : " + role);
 	//}
 %>
-
-<div class="flex justify-center">
-  <img class="h-72" src='/images/reddit-avatar.png'>
-</div>
-
-<h1>Home</h1>
-<div class="card">
-  <h5 class="card-header">Featured</h5>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-
-</br>
-<button type="button" class="btn btn-primary position-relative">
-  Inbox
-  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-    99+
-    <span class="visually-hidden">unread messages</span>
-  </span>
-</button>
-
-</br>
-</br>
-<button type="button" class="btn btn-primary">
-  Notifications <span class="badge bg-danger">4</span>
-</button>
 
 <script src="${pageContext.request.contextPath}/js/home.js"></script>
 
