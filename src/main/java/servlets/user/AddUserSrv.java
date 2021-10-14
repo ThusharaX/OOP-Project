@@ -34,17 +34,28 @@ public class AddUserSrv extends HttpServlet {
 		String lname = request.getParameter("lname");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		String rePassword = request.getParameter("re-password");
 		String mobile = request.getParameter("mobile");
 		String address = request.getParameter("address");
 		String NIC = request.getParameter("NIC");
 		String role = request.getParameter("role");
 		
-		User user = new User(fname, lname, email, password, mobile, address, NIC, role);
+		// Check if passwords are matching
+		if (password.equals(rePassword)) {
+			User user = new User(fname, lname, email, password, mobile, address, NIC, role);
+			
+			UserServiceImpl usimp = new UserServiceImpl();
+			usimp.addUser(user);
+			
+			response.sendRedirect("/login");
+		}
+		else {
+			String alert = "Password doesn't match";
+			request.setAttribute("alert", alert);
+			
+			getServletContext().getRequestDispatcher("/WEB-INF/views/user/add-user.jsp").forward(request, response);
+		}
 		
-		UserServiceImpl usimp = new UserServiceImpl();
-		usimp.addUser(user);
-		
-		response.sendRedirect("/login");
 	}
 
 }

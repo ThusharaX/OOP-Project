@@ -14,10 +14,16 @@ import model.announcement.Announcement;
 import model.category.Category;
 import model.event.Event;
 import model.feedback.Feedback;
+import model.message.Message;
+import model.ticket.Ticket;
+import model.user.User;
 import service.announcement.AnnouncementServiceImpl;
 import service.category.CategoryService;
 import service.event.EventServiceImpl;
 import service.feedback.FeedbackServiceImpl;
+import service.message.MessageService;
+import service.ticket.TicketServiceImpl;
+import service.user.UserServiceImpl;
 import servlets.category.CategoryDisplaySrv;
 
 /**
@@ -44,11 +50,16 @@ public class DashboardSrv extends HttpServlet {
 			
 			if(session.getAttribute("role").equals("admin")){
 				
+				UserServiceImpl usimp = new UserServiceImpl();
+				ArrayList<User> users = usimp.getUsers();
 				ArrayList<Announcement> announcements = AnnouncementServiceImpl.getAnnouncements();
 				ArrayList<Category> categories = CategoryService.getCategories();
+				ArrayList<Message> messages = MessageService.getMessages();
 				
+				request.setAttribute("users", users);
 				request.setAttribute("announcements", announcements);
 				request.setAttribute("categories", categories);
+				request.setAttribute("messages", messages);
 			}
 			else if(session.getAttribute("role").equals("event_manager")){
 				
@@ -58,7 +69,17 @@ public class DashboardSrv extends HttpServlet {
 			}
 			else if(session.getAttribute("role").equals("attendee")){
 				
-				// Data for attendee dashboard
+				// Feedbacks for event
+				ArrayList<Feedback> feedbacks = FeedbackServiceImpl.getFeedbackByUserID(user_id);
+				
+				// Feedbacks Data for attendee dashboard
+				request.setAttribute("feedbacks", feedbacks);
+				
+				// Ticket for user
+				ArrayList<Ticket> tickets = TicketServiceImpl.getTicketByUserID(user_id);
+				
+				// Tickets Data for attendee dashboard
+				request.setAttribute("tickets", tickets);
 			}
 			
 			request.getRequestDispatcher("/WEB-INF/views/user/dashboard.jsp").forward(request, response);

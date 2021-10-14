@@ -5,18 +5,48 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.user.User"%>
 
+<style>
+	.masthead {
+		  height: 100vh;
+		  min-height: 500px;
+		  background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080');
+		  background-size: cover;
+		  background-position: center;
+		  background-repeat: no-repeat;
+}
+</style>
 
+<!-- Full Page Image Header with Vertically Centered Content -->
+<header class="masthead">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-12 text-center">
+        <h1 class="text-7xl fw-light">Event Management System</h1>
+        </br>
+        <p class="text-xl lead">It's all about Events</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Page Content -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="fw-light"></h2>
+    <p></p>
+  </div>
+</section>
 
 <%
-	ArrayList<User> users = (ArrayList<User>)request.getAttribute("users");
+	//ArrayList<User> users = (ArrayList<User>)request.getAttribute("users");
  
-    for(User user : users)
-    {
-        out.print("Id: " + user.getId());
-        out.print("<br/>");
-        out.print("Name: " + user.getFname() + user.getLname());
-        out.print("<br/>");
-    }
+    //for(User user : users)
+    //{
+    //    out.print("Id: " + user.getId());
+    //    out.print("<br/>");
+    //    out.print("Name: " + user.getFname() + user.getLname());
+    //    out.print("<br/>");
+    //}
 %>
 
 <%
@@ -35,35 +65,6 @@
 	//	out.print("Role : " + role);
 	//}
 %>
-
-<div class="flex justify-center">
-  <img class="h-72" src='/images/reddit-avatar.png'>
-</div>
-
-<h1>Home</h1>
-<div class="card">
-  <h5 class="card-header">Featured</h5>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-
-</br>
-<button type="button" class="btn btn-primary position-relative">
-  Inbox
-  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-    99+
-    <span class="visually-hidden">unread messages</span>
-  </span>
-</button>
-
-</br>
-</br>
-<button type="button" class="btn btn-primary">
-  Notifications <span class="badge bg-danger">4</span>
-</button>
 
 <script src="${pageContext.request.contextPath}/js/home.js"></script>
 
